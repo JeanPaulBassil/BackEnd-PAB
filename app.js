@@ -2,8 +2,12 @@ let express = require('express');
 let path = require('path');
 let logger = require('morgan');
 require('./utils/database')
-let indexRouter = require('./routes/index');
-let usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const slideshowRouter = require('./routes/slideshow')
+const settingsRouter = require('./routes/settings')
+const ourServicesRouter = require('./routes/ourServices')
+const mediaRouter = require('./routes/media')
 let config = require('./config/index')
 let sequelize = config.development.mySql.client
 
@@ -17,6 +21,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/slideshow', slideshowRouter);
+app.use('/settings', settingsRouter)
+app.use('/ourServices', ourServicesRouter)
+app.use('/media', mediaRouter)
 
 // Handle 404 
 app.use(function(req, res, next) {

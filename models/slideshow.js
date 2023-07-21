@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       isActive: DataTypes.BOOLEAN,
       deleted: DataTypes.BOOLEAN
     });
-  
     return Slideshow;
   };
   
