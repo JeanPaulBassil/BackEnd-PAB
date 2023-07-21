@@ -9,7 +9,8 @@ module.exports = {
           database: 'property_and_beyond',
           dialect: "mysql",
           username: "root",
-          password: ''
+          password: '',
+          logging: false,
         },
         client: null
       },

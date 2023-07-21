@@ -8,11 +8,12 @@ const slideshowRouter = require('./routes/slideshow')
 const settingsRouter = require('./routes/settings')
 const ourServicesRouter = require('./routes/ourServices')
 const mediaRouter = require('./routes/media')
+const adminRouter = require('./routes/admin')
 let config = require('./config/index')
 let sequelize = config.development.mySql.client
-
-
 let app = express();
+const authMiddleware = require('./middlewares/authMiddleware')
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -25,6 +26,7 @@ app.use('/slideshow', slideshowRouter);
 app.use('/settings', settingsRouter)
 app.use('/ourServices', ourServicesRouter)
 app.use('/media', mediaRouter)
+app.use('/admin',  adminRouter);
 
 // Handle 404 
 app.use(function(req, res, next) {
